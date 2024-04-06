@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Наш офис</title>
+</head>
+
+<head th:insert="blocks/head :: head"></head>
+
+<body class="d-flex flex-column min-vh-100" style="background-color: #dadafc">
+
+<div th:insert="blocks/nav :: nav"></div>
+
+<main class="page catalog-page">
+    <section class="clean-block clean-catalog">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Наш офис</h2>
+            </div>
+            <div class="content rounded-3" style="padding: 20px">
+                <div class="row">
+                    <div class="col-12" align="justify"><p class="lead">    ВitTech - инновационная IT-компания,
+                        специализирующаяся на разработке передовых решений и технологий. Наша команда состоит
+                        из высококвалифицированных специалистов, которые сочетают в себе талант, энтузиазм и глубокие
+                        знания в сфере информационных технологий.</p></div>
+                    <div class="col-12" align="justify"><p class="lead">    Мы ценим долгосрочные партнерские отношения
+                        с нашими клиентами и стремимся предлагать индивидуальные и инновационные решения.
+                        Наша цель - обеспечить максимальную клиентскую удовлетворенность через высокое качество продуктов,
+                        своевременную поставку и превосходное обслуживание.</p></div>
+                    <div class="col-12" align="justify"><p class="lead">    BitTech была основана в 2010 году группой энтузиастов,
+                        разделяющих общую страсть к технологиям и стремлению изменить мир через инновации. С самого начала
+                        нашей истории мы поставили перед собой цель создать компанию, которая будет воплощать передовые идеи
+                        и разрабатывать высококачественные продукты, способные удовлетворить потребности наших клиентов.
+                        За годы работы в индустрии, BitTech зарекомендовала себя как надежный и инновационный партнер,
+                        способный решать сложные задачи и достигать успешных результатов. Мы готовы принять новые вызовы,
+                        сотрудничать с клиентами и помогать им воплощать свои цели и амбиции в реальность.</p></div>
+                    <div class="col-12" align="center">
+                        <iframe allowfullscreen="" frameborder="0" loading="lazy"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2350.5290734146097!2d27.556024177014475!3d53.9045737328088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dbcf910996a8a7%3A0xed0c40355e9a31d2!2sHR%20department%20JENTY!5e0!3m2!1sru!2sby!4v1701685409470!5m2!1sru!2sby"
+                                width="75%" height="500"  referrerpolicy="no-referrer-when-downgrade"
+                                style="box-shadow: 0 0 6px;border-radius: 5px;border: 1px solid rgb(255,255,255);width: 100%;margin-top: 15px;height: 500px;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script src="/js/vanilla-zoom.js"></script>
+<script src="/js/theme.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Вакансии</title>
+</head>
+
+<head th:insert="blocks/head :: head"></head>
+
+<body class="d-flex flex-column min-vh-100" style="background-color: #dadafc">
+
+<div th:insert="blocks/nav :: nav"></div>
+
+<main class="page catalog-page">
+    <section class="clean-block clean-catalog">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Вакансии</h2>
+            </div>
+            <div class="content p-3">
+                <form action="/jobs/add" method="post" th:if="${role == 'MANAGER'}">
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" required class="form-control" name="name" placeholder="Название">
+                        </div>
+                        <div class="col">
+                            <input type="number" required class="form-control" min="0" step="1" max="30"
+                                   name="exp" placeholder="Требуемый опыт">
+                        </div>
+                        <div class="col">
+                            <input type="number" required class="form-control" min="1" step="1" max="50000"
+                                   name="salary" placeholder="Зарплата">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary">Добавить</button>
+                        </div>
+                    </div>
+                    <hr>
+                </form>
+                <div class="row">
+                    <div th:each="i : ${jobs}" class="col-12">
+                        <form th:action="'/jobs/edit/' + ${i.id}" method="post" th:if="${role == 'MANAGER'}">
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" required class="form-control" name="name" placeholder="Название"
+                                           th:value="${i.name}">
+                                </div>
+                                <div class="col">
+                                    <input type="number" required class="form-control" min="0" step="1" max="30"
+                                           name="exp" placeholder="Требуемый опыт" th:value="${i.exp}">
+                                </div>
+                                <div class="col">
+                                    <input type="number" required class="form-control" min="1" step="1" max="50000"
+                                           name="salary" placeholder="Зарплата" th:value="${i.salary}">
+                                </div>
+                                <div class="col">
+                                    <select name="status" class="form-select" required>
+                                        <option th:each="j : ${jobStatuses}" th:value="${j}" th:label="${j.name}"
+                                                th:selected="${j == i.status}"></option>
+                                    </select>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-info">Обновить</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row" th:if="${role == 'CLIENT' or role == 'ADMIN'}">
+                            <div class="col">
+                                <p th:text="${i.name}"></p>
+                            </div>
+                            <div class="col">
+                                <p th:text="'Требуемый опыт: '+ ${i.exp}"></p>
+                            </div>
+                            <div class="col">
+                                <p th:text="'Зарплата: '+ ${i.salary}"></p>
+                            </div>
+                            <div class="col">
+                                <p th:text="'Статус: '+ ${i.status.name}"></p>
+                            </div>
+                            <div class="col-auto" th:if="${i.status.name() == 'OPEN' and role == 'CLIENT'}">
+                                <a th:href="'/jobs/res/' + ${i.id}" class="btn btn-primary">Откликнуться</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<script src="/js/vanilla-zoom.js"></script>
+<script src="/js/theme.js"></script>
+
+</body>
+
+</html>
